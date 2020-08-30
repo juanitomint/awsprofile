@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite tests="0" failures="0" time="0.000000" name="_/home/juanb/Desktop/Experiment/awsprofile">
+		<properties>
+			<property name="go.version" value="go1.15 linux/amd64"></property>
+		</properties>
+	</testsuite>
+</testsuites>
