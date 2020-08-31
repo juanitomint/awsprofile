@@ -17,6 +17,12 @@ $(awsprofile)
 aws sts get-caller-identity
 ```
 
+Alternatively you can make an alias and put it in your .bashrc .zshrc or .profile depending the linux flavor and config
+```
+alias swtichaws='$(awsprofile);aws sts get-caller-identity'
+```
+* NOTE:  the get-caller-identity is for ensuring you are on the right account and avoid you to mistakenly switch to the wrong account
+
 and you're ready !!!
 ## Built With
 
