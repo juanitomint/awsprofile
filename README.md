@@ -36,5 +36,5 @@ All contributions are welcome open an issue or make a pr!
 This code is released under MIT license
 
 ## Acknolewdements
-This tool is inspired by @ivours a coworker and a friend of mine
+This tool is inspired by [@ivours](https://github.com/ivours) a coworker and a friend of mine
 https://github.com/ivours/awsprofile
