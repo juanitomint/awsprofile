@@ -37,11 +37,11 @@ func main() {
 	// fmt.Println(">>")
 	selected := drawList(rows)
 	// selected := 3
-	// fmt.Println("echo \"Profile selected:", rows[selected], "\";\")
+	// fmt.Println("Profile selected:", rows[selected])
 	if selected >= 0 {
 		iniKey := profiles[selected]
-		exportConfig(awsCredentials, iniKey)
 		fmt.Println("export", "AWS_PROFILE"+"="+iniKey+"\n")
+		exportConfig(awsCredentials, iniKey)
 	}
 
 	os.Exit(0)
@@ -53,6 +53,8 @@ func exportConfig(awsCredentials string, iniKey string) {
 		"aws_access_key_id":     "AWS_ACCESS_KEY_ID",
 		"aws_secret_access_key": "AWS_SECRET_ACCESS_KEY",
 		"region":                "AWS_DEFAULT_REGION",
+		"role_arn":              "AWS_ROLE_ARN",
+		"role_session_name":     "AWS_ROLE_SESSION_NAME",
 	}
 	viper.SetConfigType("ini")
 	viper.SetConfigName("credentials")               // name of config file (without extension)
@@ -62,7 +64,10 @@ func exportConfig(awsCredentials string, iniKey string) {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
 	}
 	for key, value := range mmap {
-		fmt.Println("export", strings.ToUpper(value)+"="+viper.GetString(iniKey+"."+key)+"\n")
+		configvalue := viper.GetString(iniKey + "." + key)
+		if configvalue != "" {
+			fmt.Println("export", strings.ToUpper(value)+"="+viper.GetString(iniKey+"."+key)+"\n")
+		}
 
 		// os.Setenv(strings.ToUpper(value), viper.GetString(iniKey+"."+key))
 	}
